@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RÈN LUYỆN TƯ DUY VÀ LẬP LUẬN PHẢN BIỆN VỚI AI - Khóa học thực chiến rèn luyện Tư duy & Lập luận phản biện cùng Trí tuệ nhân tạo. Dành cho sinh viên Đại học FPT.">
+    <meta name="keywords" content="rèn luyện tư duy, lập luận phản biện với AI, tư duy phản biện, critical thinking, FPT University, SSA101, AI, lập luận, khóa học">
+    <meta name="author" content="Nhóm Bốn Phương Tám Hướng - SSA101 - FPT University">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RÈN LUYỆN TƯ DUY VÀ LẬP LUẬN PHẢN BIỆN VỚI AI">
+    <meta property="og:description" content="Tham gia khóa học thực chiến 4 buổi để rèn luyện tư duy phản biện sắc bén và làm chủ công nghệ AI.">
+    <meta property="og:image" content="https://placehold.co/1200x630/0D1B3E/FF6B00?text=TU+DUY+PHAN+BIEN+VOI+AI">
+
+    <title>RÈN LUYỆN TƯ DUY VÀ LẬP LUẬN PHẢN BIỆN VỚI AI | FPT University</title>
+
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            50: '#E8EDF5',
+                            100: '#C5D0E6',
+                            200: '#8FA3CC',
+                            300: '#5A76B3',
+                            400: '#2E4F8A',
+                            500: '#0D2E6B',
+                            600: '#0A2557',
+                            700: '#081C42',
+                            800: '#0D1B3E',
+                            900: '#060E1F',
+                        },
+                        fpt: {
+                            orange: '#FF6B00',
+                            'orange-light': '#FF8C33',
+                            'orange-dark': '#E05E00',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(255, 107, 0, 0.3)' },
+                            '50%': { boxShadow: '0 0 40px rgba(255, 107, 0, 0.6)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== BASE STYLES ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
+
+        /* ===== SCROLL ANIMATION ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ===== HERO PARTICLES ===== */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: floatParticle linear infinite;
+        }
+        @keyframes floatParticle {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #FF6B00, #0D2E6B);
+            transform: translateX(-50%);
+        }
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 24px;
+            }
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #FF6B00;
+            border: 4px solid #0D1B3E;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            box-shadow: 0 0 20px rgba(255, 107, 0, 0.4);
+        }
+        @media (max-width: 768px) {
+            .timeline-dot {
+                left: 24px;
+            }
+        }
+
+        /* ===== GRADIENT TEXT ===== */
+        .gradient-text {
+            background: linear-gradient(135deg, #FF6B00 0%, #FF8C33 50%, #FFB366 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ===== GLASS EFFECT ===== */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ===== GLOW BORDER ===== */
+        .glow-border {
+            position: relative;
+        }
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, #FF6B00, #0D2E6B, #FF6B00);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .glow-border:hover::before {
+            opacity: 1;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar-scrolled {
+            background: rgba(13, 27, 62, 0.95) !important;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== CTA BUTTON ===== */
+        .cta-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: width 0.6s ease, height 0.6s ease;
+            transform: translate(-50%, -50%);
+        }
+        .cta-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(255, 107, 0, 0.4);
+        }
+
+        /* ===== CARD HOVER ===== */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ===== INSTRUCTOR CARD ===== */
+        .instructor-card {
+            transition: all 0.4s ease;
+        }
+        .instructor-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+        .instructor-card:hover .instructor-img {
+            border-color: #FF6B00;
+            box-shadow: 0 0 30px rgba(255, 107, 0, 0.3);
+        }
+
+        /* ===== NEURAL NETWORK SVG BG ===== */
+        .neural-bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .neural-bg svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.06;
+        }
+
+        /* ===== PROMPT LIBRARY MODAL ===== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .modal-content {
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        /* ===== COUNTER ANIMATION ===== */
+        .counter {
+            display: inline-block;
+        }
+
+        /* ===== SCROLL INDICATOR ===== */
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-10px) translateX(-50%); }
+            60% { transform: translateY(-5px) translateX(-50%); }
+        }
+
+        /* ===== CUSTOM SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0D1B3E; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #FF6B00, #0D2E6B);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: #FF8C33; }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- ===================== NAVBAR ===================== -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <a href="#hero" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-fpt-orange to-fpt-orange-dark flex items-center justify-center shadow-lg group-hover:shadow-fpt-orange/30 transition-shadow">
+                        <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                        </svg>
+                    </div>
+                    <div class="hidden sm:block">
+                        <span class="text-white font-bold text-lg">TƯ DUY PHẢN BIỆN</span>
+                        <span class="text-fpt-orange font-bold text-lg"> VỚI AI</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#hero" class="text-white/80 hover:text-fpt-orange transition-colors text-sm font-medium">Trang chủ</a>
+                    <a href="#roadmap" class="text-white/80 hover:text-fpt-orange transition-colors text-sm font-medium">Lộ trình</a>
+                    <a href="#instructors" class="text-white/80 hover:text-fpt-orange transition-colors text-sm font-medium">Đội ngũ</a>
+                    <a href="#resources" class="text-white/80 hover:text-fpt-orange transition-colors text-sm font-medium">Tài liệu</a>
+                    <a href="#register" class="cta-btn bg-fpt-orange hover:bg-fpt-orange-dark text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-lg">
+                        ĐĂNG KÝ NGAY
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="md:hidden hidden pb-4 border-t border-white/10">
+                <div class="flex flex-col gap-3 pt-4">
+                    <a href="#hero" class="text-white/80 hover:text-fpt-orange transition-colors text-sm font-medium py-2">Trang chủ</a>
+                    <a href="#roadmap" class="text-white/80 hover:text-fpt-orange transition-colors text-sm font-medium py-2">Lộ trình</a>
+                    <a href="#instructors" class="text-white/80 hover:text-fpt-orange transition-colors text-sm font-medium py-2">Đội ngũ</a>
+                    <a href="#resources" class="text-white/80 hover:text-fpt-orange transition-colors text-sm font-medium py-2">Tài liệu</a>
+                    <a href="#register" class="cta-btn bg-fpt-orange text-white px-6 py-2.5 rounded-full text-sm font-semibold text-center shadow-lg mt-2">
+                        ĐĂNG KÝ NGAY
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================== HERO SECTION ===================== -->
+    <section id="hero" class="relative min-h-screen flex items-center bg-navy-800 overflow-hidden">
+        <!-- Animated Background -->
+        <div class="neural-bg">
+            <svg viewBox="0 0 1000 1000">
+                <defs>
+                    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#FF6B00" stop-opacity="0.3"/>
+                        <stop offset="100%" stop-color="#FF6B00" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+                <!-- Neural network connections -->
+                <g stroke="#FF6B00" stroke-width="0.5" fill="none" opacity="0.4">
+                    <line x1="100" y1="200" x2="300" y2="150"/>
+                    <line x1="300" y1="150" x2="500" y2="300"/>
+                    <line x1="500" y1="300" x2="700" y2="200"/>
+                    <line x1="700" y1="200" x2="900" y2="350"/>
+                    <line x1="200" y1="400" x2="400" y2="500"/>
+                    <line x1="400" y1="500" x2="600" y2="400"/>
+                    <line x1="600" y1="400" x2="800" y2="500"/>
+                    <line x1="150" y1="600" x2="350" y2="700"/>
+                    <line x1="350" y1="700" x2="550" y2="600"/>
+                    <line x1="550" y1="600" x2="750" y2="700"/>
+                    <line x1="750" y1="700" x2="900" y2="600"/>
+                    <line x1="300" y1="150" x2="400" y2="500"/>
+                    <line x1="500" y1="300" x2="600" y2="400"/>
+                    <line x1="700" y1="200" x2="800" y2="500"/>
+                    <line x1="200" y1="400" x2="350" y2="700"/>
+                    <line x1="600" y1="400" x2="550" y2="600"/>
+                </g>
+                <!-- Neural nodes -->
+                <g fill="#FF6B00" opacity="0.5">
+                    <circle cx="100" cy="200" r="4"/>
+                    <circle cx="300" cy="150" r="5"/>
+                    <circle cx="500" cy="300" r="6"/>
+                    <circle cx="700" cy="200" r="4"/>
+                    <circle cx="900" cy="350" r="5"/>
+                    <circle cx="200" cy="400" r="5"/>
+                    <circle cx="400" cy="500" r="4"/>
+                    <circle cx="600" cy="400" r="6"/>
+                    <circle cx="800" cy="500" r="5"/>
+                    <circle cx="150" cy="600" r="4"/>
+                    <circle cx="350" cy="700" r="5"/>
+                    <circle cx="550" cy="600" r="4"/>
+                    <circle cx="750" cy="700" r="6"/>
+                    <circle cx="900" cy="600" r="4"/>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Gradient Orbs -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-fpt-orange/10 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-navy-500/30 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+
+        <!-- Particles Container -->
+        <div id="particles" class="absolute inset-0 pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-0">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Left: Text Content -->
+                <div class="text-center md:text-left">
+                    <!-- Badge -->
+                    <!--<div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8 animate-fade-in">
+                        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                        <span class="text-white/90 text-sm font-medium">SSA101 - Đại học FPT</span>
+                    </div> -->
+
+                    <!-- Headline -->
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6 animate-slide-up">
+                        Bạn đang điều khiển
+                        <span class="gradient-text"> AI</span>,
+                        <br class="hidden sm:block">
+                        hay AI đang
+                        <span class="gradient-text"> nghĩ thay</span> bạn?
+                    </h1>
+
+                    <!-- Sub-headline -->
+                    <p class="text-lg sm:text-xl text-white/70 leading-relaxed mb-10 max-w-lg mx-auto md:mx-0 animate-slide-up" style="animation-delay: 0.2s;">
+                        Tham gia ngay khóa học thực chiến <strong class="text-white">RÈN LUYỆN TƯ DUY VÀ LẬP LUẬN PHẢN BIỆN VỚI AI</strong> để rèn luyện tư duy phản biện sắc bén và làm chủ công nghệ.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-slide-up" style="animation-delay: 0.4s;">
+                        <a href="#register" class="cta-btn bg-gradient-to-r from-fpt-orange to-fpt-orange-dark text-white px-8 py-4 rounded-full text-lg font-bold shadow-xl animate-pulse-glow inline-flex items-center justify-center gap-2">
+                            <span>ĐĂNG KÝ NGAY</span>
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </a>
+                        <a href="#roadmap" class="border-2 border-white/30 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/10 hover:border-white/50 transition-all inline-flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
+                            </svg>
+                            <span>Xem lộ trình</span>
+                        </a>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-white/10 animate-slide-up" style="animation-delay: 0.6s;">
+                        <div class="text-center md:text-left">
+                            <div class="text-3xl font-black text-fpt-orange counter" data-target="4">0</div>
+                            <div class="text-white/50 text-sm mt-1">Buổi học</div>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <div class="text-3xl font-black text-fpt-orange">100%</div>
+                            <div class="text-white/50 text-sm mt-1">Thực hành</div>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <div class="text-3xl font-black text-fpt-orange">FREE</div>
+                            <div class="text-white/50 text-sm mt-1">Miễn phí</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Hero Illustration -->
+                <div class="relative hidden md:flex items-center justify-center">
+                    <div class="relative animate-float">
+                        <!-- Brain / AI Illustration -->
+                        <div class="w-[420px] h-[420px] relative">
+                            <!-- Outer ring -->
+                            <div class="absolute inset-0 rounded-full border-2 border-fpt-orange/20 animate-spin" style="animation-duration: 20s;"></div>
+                            <div class="absolute inset-4 rounded-full border border-navy-300/20 animate-spin" style="animation-duration: 15s; animation-direction: reverse;"></div>
+
+                            <!-- Center Brain Icon -->
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-64 h-64 rounded-3xl bg-gradient-to-br from-navy-700/80 to-navy-900/80 backdrop-blur-xl border border-white/10 shadow-2xl flex items-center justify-center">
+                                    <svg class="w-40 h-40 text-fpt-orange" viewBox="0 0 200 200" fill="none">
+                                        <!-- AI Brain SVG -->
+                                        <defs>
+                                            <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stop-color="#FF6B00"/>
+                                                <stop offset="100%" stop-color="#FF8C33"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <!-- Brain outline -->
+                                        <path d="M100 30 C60 30, 30 60, 30 90 C30 110, 40 125, 55 135 C50 145, 50 155, 55 165 C60 175, 75 180, 85 175 C90 180, 95 182, 100 182 C105 182, 110 180, 115 175 C125 180, 140 175, 145 165 C150 155, 150 145, 145 135 C160 125, 170 110, 170 90 C170 60, 140 30, 100 30Z" stroke="url(#brainGrad)" stroke-width="3" fill="none"/>
+                                        <!-- Brain center line -->
+                                        <line x1="100" y1="35" x2="100" y2="180" stroke="url(#brainGrad)" stroke-width="2" stroke-dasharray="5,5"/>
+                                        <!-- Left hemisphere details -->
+                                        <path d="M55 70 Q75 65, 95 80" stroke="url(#brainGrad)" stroke-width="2" fill="none"/>
+                                        <path d="M45 95 Q70 90, 95 100" stroke="url(#brainGrad)" stroke-width="2" fill="none"/>
+                                        <path d="M50 120 Q75 115, 95 125" stroke="url(#brainGrad)" stroke-width="2" fill="none"/>
+                                        <!-- Right hemisphere details -->
+                                        <path d="M145 70 Q125 65, 105 80" stroke="url(#brainGrad)" stroke-width="2" fill="none"/>
+                                        <path d="M155 95 Q130 90, 105 100" stroke="url(#brainGrad)" stroke-width="2" fill="none"/>
+                                        <path d="M150 120 Q125 115, 105 125" stroke="url(#brainGrad)" stroke-width="2" fill="none"/>
+                                        <!-- Circuit nodes -->
+                                        <circle cx="55" cy="70" r="4" fill="#FF6B00"/>
+                                        <circle cx="145" cy="70" r="4" fill="#FF6B00"/>
+                                        <circle cx="45" cy="95" r="3" fill="#FF8C33"/>
+                                        <circle cx="155" cy="95" r="3" fill="#FF8C33"/>
+                                        <circle cx="50" cy="120" r="4" fill="#FF6B00"/>
+                                        <circle cx="150" cy="120" r="4" fill="#FF6B00"/>
+                                        <circle cx="100" cy="60" r="5" fill="#FF6B00"/>
+                                        <!-- Sparkle / AI indicator -->
+                                        <circle cx="100" cy="100" r="8" fill="#FF6B00" opacity="0.8">
+                                            <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+                                            <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2s" repeatCount="indefinite"/>
+                                        </circle>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Floating chips -->
+                            <div class="absolute top-8 right-8 glass rounded-xl px-4 py-2 text-white text-sm font-medium animate-float" style="animation-delay: -1s;">
+                                🧠 Critical Thinking
+                            </div>
+                            <div class="absolute bottom-16 left-0 glass rounded-xl px-4 py-2 text-white text-sm font-medium animate-float" style="animation-delay: -2s;">
+                                🤖 Phản biện AI
+                            </div>
+                            <div class="absolute top-1/2 right-0 glass rounded-xl px-4 py-2 text-white text-sm font-medium animate-float" style="animation-delay: -4s;">
+                                ⚡ Prompt Engineering
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 scroll-indicator z-10">
+            <a href="#roadmap" class="flex flex-col items-center gap-2 text-white/40 hover:text-fpt-orange transition-colors">
+                <span class="text-xs font-medium tracking-widest uppercase">Khám phá</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- ===================== COURSE ROADMAP ===================== -->
+    <section id="roadmap" class="py-20 md:py-28 bg-white relative overflow-hidden">
+        <!-- Decorative BG -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-fpt-orange/5 rounded-full blur-3xl -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-navy-500/5 rounded-full blur-3xl translate-y-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center gap-2 bg-fpt-orange/10 rounded-full px-4 py-2 mb-4">
+                    <svg class="w-4 h-4 text-fpt-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
+                    </svg>
+                    <span class="text-fpt-orange text-sm font-semibold">Lộ trình học tập</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-navy-800 mb-4">
+                    Hành trình <span class="gradient-text" style="-webkit-text-fill-color: unset; background: linear-gradient(135deg, #FF6B00, #E05E00); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">4 buổi</span> chinh phục AI
+                </h2>
+                <p class="text-gray-500 text-lg max-w-2xl mx-auto">
+                    Từ nền tảng tư duy đến thực chiến — bạn sẽ được trang bị mọi kỹ năng để "cãi lý" với AI một cách bài bản.
+                </p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Timeline Line -->
+                <div class="timeline-line hidden md:block"></div>
+
+                <!-- Mobile Timeline Line -->
+                <div class="timeline-line md:hidden"></div>
+
+                <!-- Session 1 -->
+                <div class="relative flex flex-col md:flex-row items-start md:items-center mb-16 reveal-left">
+                    <!-- Dot -->
+                    <div class="timeline-dot top-6 md:top-1/2 md:-translate-y-1/2"></div>
+
+                    <!-- Content - Left Side -->
+                    <div class="md:w-1/2 md:pr-16 md:text-right pl-14 md:pl-0">
+                        <div class="card-hover bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:border-fpt-orange/30">
+                            <div class="flex items-center gap-3 md:justify-end mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-fpt-orange/10 to-fpt-orange/20 flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-fpt-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                                    </svg>
+                                </div>
+                                <div class="md:order-first">
+                                    <span class="inline-block bg-fpt-orange text-white text-xs font-bold px-3 py-1 rounded-full">Buổi 1</span>
+                                </div>
+                            </div>
+                            <div class="text-sm text-fpt-orange font-semibold mb-2">📅 21/10/2026</div>
+                            <h3 class="text-xl font-bold text-navy-800 mb-2">Bản chất Tư duy & Đạo đức AI</h3>
+                            <p class="text-gray-500 leading-relaxed">Giải mã <strong class="text-navy-800">Ảo giác thông tin</strong> — hiểu vì sao AI "nói sai như thật" và cách nhận diện.</p>
+                        </div>
+                    </div>
+
+                    <!-- Empty Right Side -->
+                    <div class="md:w-1/2 hidden md:block"></div>
+                </div>
+
+                <!-- Session 2 -->
+                <div class="relative flex flex-col md:flex-row items-start md:items-center mb-16 reveal-right">
+                    <!-- Dot -->
+                    <div class="timeline-dot top-6 md:top-1/2 md:-translate-y-1/2"></div>
+
+                    <!-- Empty Left Side -->
+                    <div class="md:w-1/2 hidden md:block"></div>
+
+                    <!-- Content - Right Side -->
+                    <div class="md:w-1/2 md:pl-16 pl-14">
+                        <div class="card-hover bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:border-fpt-orange/30">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-navy-500/10 to-navy-500/20 flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-navy-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+                                    </svg>
+                                </div>
+                                <span class="inline-block bg-navy-500 text-white text-xs font-bold px-3 py-1 rounded-full">Buổi 2</span>
+                            </div>
+                            <div class="text-sm text-navy-500 font-semibold mb-2">📅 23/10/2026</div>
+                            <h3 class="text-xl font-bold text-navy-800 mb-2">Phản biện bằng Bộ câu hỏi Logic</h3>
+                            <p class="text-gray-500 leading-relaxed">Thực hành <strong class="text-navy-800">cãi tay đôi với thuật toán</strong> — dùng câu hỏi sắc bén để bắt lỗi AI.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Session 3 -->
+                <div class="relative flex flex-col md:flex-row items-start md:items-center mb-16 reveal-left">
+                    <!-- Dot -->
+                    <div class="timeline-dot top-6 md:top-1/2 md:-translate-y-1/2"></div>
+
+                    <!-- Content - Left Side -->
+                    <div class="md:w-1/2 md:pr-16 md:text-right pl-14 md:pl-0">
+                        <div class="card-hover bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:border-fpt-orange/30">
+                            <div class="flex items-center gap-3 md:justify-end mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-fpt-orange/10 to-fpt-orange/20 flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-fpt-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                                    </svg>
+                                </div>
+                                <div class="md:order-first">
+                                    <span class="inline-block bg-fpt-orange text-white text-xs font-bold px-3 py-1 rounded-full">Buổi 3</span>
+                                </div>
+                            </div>
+                            <div class="text-sm text-fpt-orange font-semibold mb-2">📅 28/10/2026</div>
+                            <h3 class="text-xl font-bold text-navy-800 mb-2">Đối mặt với lỗ hổng lập luận</h3>
+                            <p class="text-gray-500 leading-relaxed">Ép AI làm <strong class="text-navy-800">đối tác tranh biện</strong> — khai thác điểm yếu và xây lập luận vững chắc.</p>
+                        </div>
+                    </div>
+
+                    <!-- Empty Right Side -->
+                    <div class="md:w-1/2 hidden md:block"></div>
+                </div>
+
+                <!-- Session 4 -->
+                <div class="relative flex flex-col md:flex-row items-start md:items-center reveal-right">
+                    <!-- Dot -->
+                    <div class="timeline-dot top-6 md:top-1/2 md:-translate-y-1/2"></div>
+
+                    <!-- Empty Left Side -->
+                    <div class="md:w-1/2 hidden md:block"></div>
+
+                    <!-- Content - Right Side -->
+                    <div class="md:w-1/2 md:pl-16 pl-14">
+                        <div class="card-hover bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:border-fpt-orange/30">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-navy-500/10 to-navy-500/20 flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-navy-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+                                    </svg>
+                                </div>
+                                <span class="inline-block bg-navy-500 text-white text-xs font-bold px-3 py-1 rounded-full">Buổi 4</span>
+                            </div>
+                            <div class="text-sm text-navy-500 font-semibold mb-2">📅 30/10/2026</div>
+                            <h3 class="text-xl font-bold text-navy-800 mb-2">Ứng dụng & Giải quyết vấn đề</h3>
+                            <p class="text-gray-500 leading-relaxed">Xử lý <strong class="text-navy-800">Assignment thực tế</strong> — biến AI thành công cụ hỗ trợ đắc lực, không phải nạng chống.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== INSTRUCTORS ===================== -->
+    <section id="instructors" class="py-20 md:py-28 bg-navy-800 relative overflow-hidden">
+        <!-- Decorative -->
+        <div class="absolute top-0 left-1/2 w-full h-px bg-gradient-to-r from-transparent via-fpt-orange/30 to-transparent"></div>
+        <div class="absolute bottom-0 left-1/2 w-full h-px bg-gradient-to-r from-transparent via-fpt-orange/30 to-transparent"></div>
+        <div class="absolute top-1/3 right-0 w-72 h-72 bg-fpt-orange/5 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 mb-4">
+                    <svg class="w-4 h-4 text-fpt-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                    </svg>
+                    <span class="text-fpt-orange text-sm font-semibold">Đội ngũ</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4">
+                    Nhóm <span class="gradient-text">Bốn Phương Tám Hướng</span>
+                </h2>
+                <p class="text-white/50 text-lg max-w-2xl mx-auto">
+                    Những người bạn đồng hành cùng bạn trên hành trình chinh phục tư duy phản biện.
+                </p>
+            </div>
+
+            <!-- Instructor Cards -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+                <!-- Member 1 -->
+                <div class="instructor-card text-center reveal" style="transition-delay: 0.1s;">
+                    <div class="relative mb-4 mx-auto w-32 h-32 sm:w-36 sm:h-36">
+                        <div class="instructor-img w-full h-full rounded-2xl border-2 border-white/20 overflow-hidden bg-navy-700 transition-all duration-400">
+                            <!-- Placeholder for real photo -->
+                            <img src="202.jpg" alt="Thành viên 1" class="w-full h-full object-cover">
+                            <!-- Replace above div with: <img src="path/to/photo.jpg" alt="Tên thành viên" class="w-full h-full object-cover"> -->
+                        </div>
+                    </div>
+                    <h3 class="text-white font-bold text-sm sm:text-base">Nguyễn Anh Quốc</h3>
+                    <p class="text-white/40 text-xs sm:text-sm mt-1">Trưởng nhóm</p>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="instructor-card text-center reveal" style="transition-delay: 0.2s;">
+                    <div class="relative mb-4 mx-auto w-32 h-32 sm:w-36 sm:h-36">
+                        <div class="instructor-img w-full h-full rounded-2xl border-2 border-white/20 overflow-hidden bg-navy-700 transition-all duration-400">
+                            <img src="203.jpg" alt="Thành viên 1" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <h3 class="text-white font-bold text-sm sm:text-base">Ngô Khoa Vũ</h3>
+                    <p class="text-white/40 text-xs sm:text-sm mt-1">Thành viên</p>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="instructor-card text-center reveal" style="transition-delay: 0.3s;">
+                    <div class="relative mb-4 mx-auto w-32 h-32 sm:w-36 sm:h-36">
+                        <div class="instructor-img w-full h-full rounded-2xl border-2 border-white/20 overflow-hidden bg-navy-700 transition-all duration-400">
+                            <img src="204.jpg" alt="Thành viên 1" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <h3 class="text-white font-bold text-sm sm:text-base">Mai Ngọc Minh</h3>
+                    <p class="text-white/40 text-xs sm:text-sm mt-1">Thành viên</p>
+                </div>
+
+                <!-- Member 4 -->
+                <div class="instructor-card text-center reveal" style="transition-delay: 0.4s;">
+                    <div class="relative mb-4 mx-auto w-32 h-32 sm:w-36 sm:h-36">
+                        <div class="instructor-img w-full h-full rounded-2xl border-2 border-white/20 overflow-hidden bg-navy-700 transition-all duration-400">
+                            <img src="205.jpg" alt="Thành viên 1" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <h3 class="text-white font-bold text-sm sm:text-base">Dương Minh Anh</h3>
+                    <p class="text-white/40 text-xs sm:text-sm mt-1">Thành viên</p>
+                </div>
+
+                <!-- Member 5 -->
+                <div class="instructor-card text-center reveal" style="transition-delay: 0.5s;">
+                    <div class="relative mb-4 mx-auto w-32 h-32 sm:w-36 sm:h-36">
+                        <div class="instructor-img w-full h-full rounded-2xl border-2 border-white/20 overflow-hidden bg-navy-700 transition-all duration-400">
+                            <img src="207.jpg" alt="Thành viên 1" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <h3 class="text-white font-bold text-sm sm:text-base">Vũ Huy Hoàng</h3>
+                    <p class="text-white/40 text-xs sm:text-sm mt-1">Thành viên</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== RESOURCES ===================== -->
+    <section id="resources" class="py-20 md:py-28 bg-gray-50 relative overflow-hidden">
+        <div class="absolute top-1/2 left-0 w-72 h-72 bg-fpt-orange/5 rounded-full blur-3xl -translate-y-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Left: Content -->
+                <div class="reveal-left">
+                    <div class="inline-flex items-center gap-2 bg-fpt-orange/10 rounded-full px-4 py-2 mb-6">
+                        <svg class="w-4 h-4 text-fpt-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                        </svg>
+                        <span class="text-fpt-orange text-sm font-semibold">Tài liệu học tập</span>
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl font-black text-navy-800 mb-6 leading-tight">
+                        Cẩm nang số:<br>
+                        <span class="gradient-text" style="-webkit-text-fill-color: unset; background: linear-gradient(135deg, #FF6B00, #E05E00); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Bí kíp cãi lý với AI</span>
+                    </h2>
+
+                    <p class="text-gray-500 text-lg leading-relaxed mb-6">
+                        Bộ tài liệu được biên soạn bởi nhóm Bốn Phương Tám Hướng, tổng hợp các kỹ thuật phản biện, prompt engineering nâng cao và case study thực tế giúp bạn:
+                    </p>
+
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                </svg>
+                            </div>
+                            <span class="text-gray-600">Nhận diện và xử lý <strong class="text-navy-800">Ảo giác AI</strong> (AI Hallucination)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                </svg>
+                            </div>
+                            <span class="text-gray-600">Xây dựng <strong class="text-navy-800">Prompt sắc bén</strong> ép AI sửa lỗi logic</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                </svg>
+                            </div>
+                            <span class="text-gray-600">Áp dụng framework <strong class="text-navy-800">tranh biện với AI</strong> vào bài tập thực tế</span>
+                        </li>
+                    </ul>
+
+                    <button id="openPromptLib" class="cta-btn bg-gradient-to-r from-fpt-orange to-fpt-orange-dark text-white px-8 py-4 rounded-full text-lg font-bold shadow-xl inline-flex items-center gap-3 hover:shadow-2xl">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                        </svg>
+                        <span>Khám phá Thư viện Prompt</span>
+                    </button>
+                </div>
+
+                <!-- Right: Illustration Card -->
+                <div class="reveal-right">
+                    <div class="relative">
+                        <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
+                            <!-- Terminal-like header -->
+                            <div class="flex items-center gap-2 mb-6">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                                <span class="text-gray-400 text-sm ml-2 font-mono">prompt_library.md</span>
+                            </div>
+
+                            <!-- Fake code/prompt content -->
+                            <div class="space-y-4 font-mono text-sm">
+                                <div class="bg-navy-800 rounded-xl p-4 text-white/90">
+                                    <div class="text-fpt-orange mb-1">## Prompt #1: Phản biện logic</div>
+                                    <p class="text-white/60 text-xs leading-relaxed">"Hãy đóng vai người phản biện. Chỉ ra 3 lỗi ngụy biện logic trong đoạn văn sau và giải thích tại sao chúng không hợp lệ..."</p>
+                                </div>
+                                <div class="bg-navy-800 rounded-xl p-4 text-white/90">
+                                    <div class="text-fpt-orange mb-1">## Prompt #2: Kiểm chứng thông tin</div>
+                                    <p class="text-white/60 text-xs leading-relaxed">"Tôi sẽ đưa ra một khẳng định. Hãy phân tích theo 5 bước: Nguồn gốc → Bằng chứng → Thiên lệch → Phản luận → Kết luận..."</p>
+                                </div>
+                                <div class="bg-navy-800 rounded-xl p-4 text-white/90">
+                                    <div class="text-fpt-orange mb-1">## Prompt #3: Ép AI tự sửa</div>
+                                    <p class="text-white/60 text-xs leading-relaxed">"Câu trả lời trước của bạn có lỗi. Hãy tự review lại từ đầu, liệt kê từng bước suy luận, và đánh dấu bước nào có thể sai..."</p>
+                                </div>
+                            </div>
+
+                            <!-- Decorative -->
+                            <div class="mt-6 flex items-center justify-between text-gray-400 text-xs">
+                                <span>📄 Tổng cộng 20+ prompts</span>
+                                <span class="text-fpt-orange font-semibold">Cập nhật liên tục →</span>
+                            </div>
+                        </div>
+
+                        <!-- Decorative floating elements -->
+                        <div class="absolute -top-4 -right-4 w-20 h-20 bg-fpt-orange/10 rounded-2xl rotate-12 -z-10"></div>
+                        <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-navy-500/10 rounded-2xl -rotate-12 -z-10"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== REGISTRATION ===================== -->
+    <section id="register" class="py-20 md:py-28 bg-navy-800 relative overflow-hidden">
+        <!-- Decorative -->
+        <div class="absolute top-0 left-1/2 w-full h-px bg-gradient-to-r from-transparent via-fpt-orange/30 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-navy-900/50 to-navy-800"></div>
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-fpt-orange/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-navy-500/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-12 reveal">
+                <div class="inline-flex items-center gap-2 bg-fpt-orange/20 rounded-full px-4 py-2 mb-4">
+                    <svg class="w-4 h-4 text-fpt-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z" />
+                    </svg>
+                    <span class="text-fpt-orange text-sm font-bold">Số lượng có hạn!</span>
+                </div>
+
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4">
+                    Sẵn sàng <span class="gradient-text">chinh phục</span> AI?
+                </h2>
+                <p class="text-white/50 text-lg max-w-xl mx-auto mb-2">
+                    Để lại thông tin để giữ chỗ, số lượng có hạn!
+                </p>
+                <p class="text-white/30 text-sm">
+                    ⏰ Khóa học bắt đầu từ ngày 21/10/2026
+                </p>
+            </div>
+
+            <!-- Google Form Embed Block -->
+            <div class="reveal">
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-white/20">
+                    <!-- Form Header Bar -->
+                    <div class="bg-gradient-to-r from-fpt-orange to-fpt-orange-dark px-6 py-4 flex items-center gap-3">
+                        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+                        </svg>
+                        <span class="text-white font-semibold">Form Đăng ký - RÈN LUYỆN TƯ DUY VÀ LẬP LUẬN PHẢN BIỆN VỚI AI</span>
+                    </div>
+
+                    <!-- Iframe Container -->
+                    <div class="p-2 bg-gray-50" style="min-height: 600px;">
+                        <!--
+                            ========================================================================================
+                            HƯỚNG DẪN NHÚNG GOOGLE FORM:
+                            1. Mở Google Form của bạn
+                            2. Click "Gửi" (Send) → Tab "< >" (Nhúng HTML)
+                            3. Copy link và thay thế URL trong src="" bên dưới
+                            4. Ví dụ: src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
+                            ========================================================================================
+                        -->
+                        <iframe
+                            src="https://forms.gle/rqkFDcv4ySbsovab6?embedded=true"
+                            title="Form đăng ký Rèn luyện Tư duy và Lập luận Phản biện với AI"
+                            width="100%"
+                            height="650"
+                            frameborder="0"
+                            marginheight="0"
+                            marginwidth="0"
+                            class="rounded-2xl"
+                            loading="lazy">
+                            Đang tải…
+                        </iframe>
+
+                        <div class="text-center py-3">
+                            <a href="https://forms.gle/rqkFDcv4ySbsovab6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-fpt-orange hover:underline font-medium">
+                                <span>Không hiển thị được Form? Bấm vào đây để mở trong tab mới</span>
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-navy-900 text-white/60 relative">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-fpt-orange/20 to-transparent"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+                <!-- Logo & Branding -->
+                <div class="text-center md:text-left">
+                    <div class="flex items-center gap-3 justify-center md:justify-start mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-fpt-orange to-fpt-orange-dark flex items-center justify-center shadow-lg">
+                            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-white font-bold">FPT University</div>
+                            <div class="text-white/40 text-xs">Nhóm Bốn Phương Tám Hướng</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-white/30">
+                        Môn học SSA101 - Kỹ năng học thuật
+                    </p>
+                </div>
+
+                <!-- Location -->
+                <div class="text-center">
+                    <div class="flex items-center gap-2 justify-center mb-2">
+                        <svg class="w-5 h-5 text-fpt-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                        </svg>
+                        <span class="text-white/80 text-sm font-medium">Địa điểm</span>
+                    </div>
+                    <p class="text-sm">Tòa nhà Epsilon - Trường Đại học FPT</p>
+                </div>
+
+                <!-- Copyright -->
+                <div class="text-center md:text-right">
+                    <p class="text-sm">
+                        Bản quyền thuộc về môn học <strong class="text-white/80">SSA101</strong>
+                    </p>
+                    <p class="text-xs text-white/30 mt-1.5">
+                        © 2026 Nhóm Bốn Phương Tám Hướng — FPT University
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="mt-8 pt-6 border-t border-white/5 text-center">
+                <p class="text-xs text-white/25 tracking-wide">
+                    Dự án: RÈN LUYỆN TƯ DUY VÀ LẬP LUẬN PHẢN BIỆN VỚI AI
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================== PROMPT LIBRARY MODAL ===================== -->
+    <div id="promptModal" class="modal-overlay">
+        <div class="modal-content bg-white rounded-3xl shadow-2xl max-w-2xl w-full mx-4 max-h-[85vh] overflow-hidden">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-navy-800 to-navy-900 px-6 py-5 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-fpt-orange/20 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-fpt-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold text-lg">Thư viện Prompt</h3>
+                        <p class="text-white/50 text-xs">Các câu lệnh mẫu để "cãi lý" với AI</p>
+                    </div>
+                </div>
+                <button id="closePromptModal" class="text-white/50 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/10">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 overflow-y-auto max-h-[60vh] space-y-4">
+                <!-- Prompt 1 -->
+                <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 hover:border-fpt-orange/30 transition-colors">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-fpt-orange text-white text-xs font-bold px-2.5 py-1 rounded-full">#1</span>
+                        <h4 class="font-bold text-navy-800">Phản biện logic</h4>
+                    </div>
+                    <div class="bg-navy-800 rounded-xl p-4 font-mono text-sm text-white/80 leading-relaxed">
+                        "Hãy đóng vai một người phản biện khách quan. Chỉ ra <span class="text-fpt-orange">3 lỗi ngụy biện logic</span> trong đoạn văn tôi sẽ cung cấp. Với mỗi lỗi, hãy: (1) Trích dẫn câu chứa lỗi, (2) Đặt tên loại ngụy biện, (3) Giải thích tại sao nó không hợp lệ."
+                    </div>
+                </div>
+
+                <!-- Prompt 2 -->
+                <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 hover:border-fpt-orange/30 transition-colors">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-navy-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">#2</span>
+                        <h4 class="font-bold text-navy-800">Ép AI tự sửa lỗi</h4>
+                    </div>
+                    <div class="bg-navy-800 rounded-xl p-4 font-mono text-sm text-white/80 leading-relaxed">
+                        "Câu trả lời trước của bạn có lỗi. Hãy <span class="text-fpt-orange">tự review lại từ đầu</span>, liệt kê từng bước suy luận bạn đã dùng, đánh dấu bước nào có thể sai, và đưa ra câu trả lời đã sửa kèm giải thích sự khác biệt."
+                    </div>
+                </div>
+
+                <!-- Prompt 3 -->
+                <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 hover:border-fpt-orange/30 transition-colors">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-fpt-orange text-white text-xs font-bold px-2.5 py-1 rounded-full">#3</span>
+                        <h4 class="font-bold text-navy-800">Kiểm chứng 5 bước</h4>
+                    </div>
+                    <div class="bg-navy-800 rounded-xl p-4 font-mono text-sm text-white/80 leading-relaxed">
+                        "Tôi đưa ra một khẳng định. Hãy phân tích theo <span class="text-fpt-orange">5 bước</span>: (1) Nguồn gốc: Thông tin này đến từ đâu? (2) Bằng chứng: Có dữ liệu nào hỗ trợ? (3) Thiên lệch: Có bias nào? (4) Phản luận: Quan điểm đối lập? (5) Kết luận: Đáng tin hay không?"
+                    </div>
+                </div>
+
+                <!-- Prompt 4 -->
+                <div class="bg-gray-50 rounded-2xl p-5 border border-gray-100 hover:border-fpt-orange/30 transition-colors">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-navy-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">#4</span>
+                        <h4 class="font-bold text-navy-800">Tranh biện hai phe</h4>
+                    </div>
+                    <div class="bg-navy-800 rounded-xl p-4 font-mono text-sm text-white/80 leading-relaxed">
+                        "Về chủ đề [X], hãy đóng vai <span class="text-fpt-orange">2 chuyên gia có quan điểm đối lập</span>. Mỗi người trình bày 3 luận điểm chính kèm bằng chứng. Sau đó, tổng hợp và chỉ ra luận điểm nào mạnh nhất từ mỗi bên."
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="px-6 py-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
+                <p class="text-gray-400 text-sm">💡 Copy prompt và dán vào ChatGPT / Gemini / Claude</p>
+                <button id="closePromptModal2" class="bg-navy-800 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-navy-700 transition-colors">
+                    Đóng
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== BACK TO TOP ===================== -->
+    <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-fpt-orange text-white rounded-full shadow-xl flex items-center justify-center z-50 opacity-0 pointer-events-none transition-all duration-300 hover:bg-fpt-orange-dark hover:scale-110">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+        </svg>
+    </button>
+
+    <!-- ===================== JAVASCRIPT ===================== -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // ===== NAVBAR SCROLL EFFECT =====
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+
+            // Back to top button
+            if (window.scrollY > 500) {
+                backToTop.classList.remove('opacity-0', 'pointer-events-none');
+                backToTop.classList.add('opacity-100');
+            } else {
+                backToTop.classList.add('opacity-0', 'pointer-events-none');
+                backToTop.classList.remove('opacity-100');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ===== MOBILE MENU TOGGLE =====
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // ===== SCROLL REVEAL ANIMATION =====
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ===== HERO PARTICLES =====
+        const particlesContainer = document.getElementById('particles');
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+
+            const size = Math.random() * 4 + 2;
+            const left = Math.random() * 100;
+            const duration = Math.random() * 10 + 8;
+            const delay = Math.random() * 5;
+
+            particle.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                left: ${left}%;
+                bottom: -10px;
+                background: ${Math.random() > 0.5 ? '#FF6B00' : 'rgba(255, 255, 255, 0.3)'};
+                animation-duration: ${duration}s;
+                animation-delay: ${delay}s;
+            `;
+
+            particlesContainer.appendChild(particle);
+
+            setTimeout(() => particle.remove(), (duration + delay) * 1000);
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 800);
+        for (let i = 0; i < 15; i++) setTimeout(createParticle, i * 200);
+
+        // ===== COUNTER ANIMATION =====
+        const counters = document.querySelectorAll('.counter');
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.getAttribute('data-target'));
+                    let count = 0;
+                    const increment = target / 30;
+
+                    const updateCounter = () => {
+                        count += increment;
+                        if (count < target) {
+                            entry.target.textContent = Math.ceil(count);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            entry.target.textContent = target;
+                        }
+                    };
+
+                    updateCounter();
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // ===== PROMPT LIBRARY MODAL =====
+        const openBtn = document.getElementById('openPromptLib');
+        const modal = document.getElementById('promptModal');
+        const closeBtn = document.getElementById('closePromptModal');
+        const closeBtn2 = document.getElementById('closePromptModal2');
+
+        openBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        const closeModal = () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        closeBtn.addEventListener('click', closeModal);
+        closeBtn2.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80; // navbar height
+                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+    });
+    </script>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "RÈN LUYỆN TƯ DUY VÀ LẬP LUẬN PHẢN BIỆN VỚI AI",
+        "description": "Khóa học thực chiến 4 buổi rèn luyện tư duy phản biện sắc bén và làm chủ công nghệ AI dành cho sinh viên Đại học FPT.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Nhóm Bốn Phương Tám Hướng - FPT University",
+            "sameAs": "https://daihoc.fpt.edu.vn"
+        },
+        "location": {
+            "@type": "Place",
+            "name": "Tòa nhà Epsilon - Trường Đại học FPT"
+        },
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "onsite",
+            "startDate": "2026-10-21",
+            "endDate": "2026-10-30"
+        },
+        "isAccessibleForFree": true
+    }
+    </script>
+
+</body>
+</html>
