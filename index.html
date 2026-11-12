@@ -1744,7 +1744,7 @@
     });
 
     // ==========================================
-    // ===== NGÂN HÀNG CÂU HỎI THỬ THÁCH (20 CÂU - 4 TRỤ CỘT SSA101) =====
+    // ===== NGÂN HÀNG CÂU HỎI THỬ THÁCH (30 CÂU - 4 TRỤ CỘT SSA101) =====
     // ==========================================
     const quizQuestions = [
         // ===== NHÓM 1: KIỂM CHỨNG THÔNG TIN (FACT-CHECKING & SOURCE VERIFICATION) =====
@@ -2048,6 +2048,151 @@
             options: ["ĐÚNG", "SAI"],
             correct: 0,
             explanation: "Chính xác! ĐÚNG. Một cỡ mẫu quá nhỏ (5 người) tại một địa điểm không mang tính đại diện ngẫu nhiên tuyệt đối không thể dùng để quy kết cho toàn bộ hàng triệu sinh viên toàn quốc."
+        },
+        {
+            id: 21,
+            category: "Kiểm chứng thông tin",
+            categoryIcon: "🔍",
+            categoryBadge: "bg-blue-100 text-blue-800 border-blue-200",
+            type: "choice",
+            quote: "AI tóm tắt một bài báo khoa học: <strong>Loại thuốc thảo mộc X đã chữa khỏi hoàn toàn mất ngủ cho 100% bệnh nhân thử nghiệm</strong>. Nhưng khi kiểm tra kỹ phương pháp, nghiên cứu chỉ thử nghiệm trên 6 người và không có nhóm đối chứng.",
+            question: "❓ Điểm mù nghiên cứu mà AI đã bỏ qua khi kiểm chứng dữ liệu là gì?",
+            options: [
+                "Cỡ mẫu quá nhỏ (N=6) và thiếu nhóm đối chứng dùng giả dược (Placebo Control Group) để loại trừ yếu tố tâm lý",
+                "Thuốc thảo mộc không được phép thử nghiệm trên con người",
+                "Bài báo viết bằng tiếng Anh chứ không phải tiếng Việt",
+                "AI luôn tóm tắt đúng 100%, tác giả mới là bên sai"
+            ],
+            correct: 0,
+            explanation: "Chính xác! Thử nghiệm khoa học bắt buộc phải có cỡ mẫu đủ lớn và <strong>nhóm đối chứng (Control Group)</strong>. AI thường chỉ đọc lướt kết luận phần Tóm tắt (Abstract) mà bỏ qua lỗ hổng phương pháp luận (Methodology)!"
+        },
+        {
+            id: 22,
+            category: "Kiểm chứng thông tin",
+            categoryIcon: "🔍",
+            categoryBadge: "bg-blue-100 text-blue-800 border-blue-200",
+            type: "true_false",
+            quote: "Nguyên tắc 'Lateral Reading' (Đọc mở rộng theo chiều ngang) trong kiểm chứng số nghĩa là: Thay vì chỉ đọc một trang web, ta mở nhiều tab mới để tra cứu các nguồn độc lập xem trang web đó có uy tín hay không.",
+            question: "❓ Định nghĩa về phương pháp 'Lateral Reading' trên là ĐÚNG hay SAI?",
+            options: ["ĐÚNG", "SAI"],
+            correct: 0,
+            explanation: "Chính xác! ĐÚNG. Chuyên gia kiểm chứng thông tin của Stanford khuyên dùng <strong>Lateral Reading</strong> (mở tab mới tra cứu bên thứ ba) thay vì Vertical Reading (chỉ đọc lướt từ trên xuống dưới một trang web dễ bị lừa)."
+        },
+        {
+            id: 23,
+            category: "Phản biện giả định",
+            categoryIcon: "💡",
+            categoryBadge: "bg-amber-100 text-amber-800 border-amber-200",
+            type: "choice",
+            quote: "AI phân tích: <strong>Nếu sinh viên thức khuya sau 12h đêm thì 100% là do chơi game và lướt mạng xã hội. Vì vậy, cắt WiFi ký túc xá lúc 23h sẽ giải quyết triệt để vấn đề học tập</strong>.",
+            question: "❓ Giả định ngầm (Hidden Assumption) nào đã bị AI quy chụp sai lầm?",
+            options: [
+                "Ký túc xá không có đủ thiết bị phát sóng WiFi",
+                "Giả định rằng mọi sinh viên thức khuya đều chơi bời, bỏ qua các trường hợp thức khuya để chạy deadline dự án, học nhóm quốc tế lệch múi giờ hoặc nghiên cứu khoa học",
+                "Sinh viên đại học không biết cách dùng mạng 4G/5G",
+                "WiFi ký túc xá có tốc độ đường truyền quá chậm"
+            ],
+            correct: 1,
+            explanation: "Chính xác! Giải pháp 'cắt WiFi' dựa trên <strong>tiền đề ẩn quy chụp sai lệch</strong>. Phản biện giả định giúp nhìn thấy nhu cầu học tập thực tế và ngăn chặn những chính sách cấm đoán cảm tính, phản tác dụng."
+        },
+        {
+            id: 24,
+            category: "Phản biện giả định",
+            categoryIcon: "💡",
+            categoryBadge: "bg-amber-100 text-amber-800 border-amber-200",
+            type: "true_false",
+            quote: "Khi một lập luận cho rằng: 'Mô hình này thành công rực rỡ tại Thụy Sĩ, do đó nó chắc chắn sẽ hiệu quả hoàn hảo khi áp dụng ngay cho các trường vùng cao tại Việt Nam', lập luận này mắc bẫy giả định về tính tương đồng bối cảnh.",
+            question: "❓ Nhận định trên là ĐÚNG hay SAI?",
+            options: ["ĐÚNG", "SAI"],
+            correct: 0,
+            explanation: "Chính xác! ĐÚNG. <strong>Giả định tương đồng bối cảnh (Contextual Assumption)</strong> là sai lầm phổ biến: cho rằng điều đúng ở môi trường hạ tầng, văn hóa A thì sẽ tự động đúng ở môi trường B mà không cần đánh giá điều kiện thích nghi."
+        },
+        {
+            id: 25,
+            category: "Phản biện giả định",
+            categoryIcon: "💡",
+            categoryBadge: "bg-amber-100 text-amber-800 border-amber-200",
+            type: "choice",
+            quote: "Đề tài thảo luận: 'Doanh nghiệp nên sa thải toàn bộ nhân sự chăm sóc khách hàng và thay bằng chatbot AI 100%'. AI kết luận: <strong>Đây là quyết định tối ưu tuyệt đối vì chatbot trả lời nhanh gấp 10 lần và không đòi tăng lương</strong>.",
+            question: "❓ Lập luận của AI đã mặc định giả định hạn hẹp nào về giá trị chăm sóc khách hàng?",
+            options: [
+                "Chatbot AI tiêu tốn quá nhiều tiền điện máy chủ",
+                "Mặc định rằng 'tốc độ trả lời' là yếu tố duy nhất làm khách hàng hài lòng, bỏ qua hoàn toàn các yếu tố cảm xúc: sự thấu cảm của con người, khả năng giải quyết khiếu nại phức tạp và sự gắn kết thương hiệu",
+                "Nhân viên chăm sóc khách hàng đều biết lập trình AI",
+                "Khách hàng chỉ thích nhắn tin vào ban đêm"
+            ],
+            correct: 1,
+            explanation: "Chính xác! AI chỉ nhìn vào một metric bề nổi (tốc độ/chi phí) mà bỏ qua <strong>giả định cốt lõi về tâm lý con người</strong>. Tốc độ nhanh nhưng máy móc vô cảm có thể phá hủy trải nghiệm khách hàng!"
+        },
+        {
+            id: 26,
+            category: "Phản biện đa chiều",
+            categoryIcon: "⚖️",
+            categoryBadge: "bg-emerald-100 text-emerald-800 border-emerald-200",
+            type: "true_false",
+            quote: "Trong tư duy phản biện đa chiều, việc chủ động tìm kiếm các 'Bằng chứng không xác nhận' (Disconfirming Evidence) — tức là dữ liệu chống lại niềm tin ban đầu của bản thân — là dấu hiệu của sự yếu đuối và thiếu tự tin.",
+            question: "❓ Nhận định trên là ĐÚNG hay SAI?",
+            options: ["ĐÚNG", "SAI"],
+            correct: 1,
+            explanation: "Chính xác! SAI. Chủ động tìm kiếm <strong>Disconfirming Evidence</strong> (bằng chứng trái ngược) là đỉnh cao của sự dũng cảm trí tuệ (Intellectual Courage), giúp ta thoát khỏi cạm bẫy 'Thiên kiến xác nhận' (Confirmation Bias)."
+        },
+        {
+            id: 27,
+            category: "Phản biện đa chiều",
+            categoryIcon: "⚖️",
+            categoryBadge: "bg-emerald-100 text-emerald-800 border-emerald-200",
+            type: "choice",
+            quote: "Khi tranh luận về việc: 'Có nên cấm xe máy chạy xăng tại các đô thị lớn từ năm 2030 hay không?', để có bài thuyết trình phản biện đa chiều nhất, bạn cần phân tích những góc nhìn nào?",
+            question: "❓ Phương pháp tiếp cận đa bên liên quan (Multi-stakeholder approach) toàn diện nhất là gì?",
+            options: [
+                "Chỉ phỏng vấn những người đi xe hơi cao cấp vì họ ít bị ảnh hưởng",
+                "Phân tích đa chiều từ góc nhìn: Người lao động thu nhập thấp (chạy xe ôm/giao hàng), Cơ quan quản lý môi trường, Doanh nghiệp xe điện và Hạ tầng trạm sạc lưới điện quốc gia",
+                "Chỉ tìm các bài viết của các tổ chức môi trường quốc tế đồng tình với lệnh cấm",
+                "Bỏ qua các ý kiến phản đối vì bảo vệ môi trường là mục tiêu tối thượng không cần bàn cãi"
+            ],
+            correct: 1,
+            explanation: "Chính xác! Phản biện đa chiều không chỉ nhìn vào mục tiêu lý tưởng mà phải đặt trong <strong>bức tranh hệ sinh thái đa bên liên quan (Stakeholders)</strong>, đặc biệt là nhóm người yếu thế chịu tác động trực tiếp."
+        },
+        {
+            id: 28,
+            category: "Phản biện đa chiều",
+            categoryIcon: "⚖️",
+            categoryBadge: "bg-emerald-100 text-emerald-800 border-emerald-200",
+            type: "true_false",
+            quote: "Hiện tượng 'Echo Chamber' (Phòng tiếng vang thông tin) mô tả việc thuật toán mạng xã hội và AI chỉ gợi ý nội dung củng cố quan điểm sẵn có, khiến người dùng ngày càng tin rằng cả thế giới đều nghĩ giống mình.",
+            question: "❓ Hiện tượng 'Echo Chamber' là một rào cản lớn đối với tư duy phản biện đa chiều, đúng hay sai?",
+            options: ["ĐÚNG", "SAI"],
+            correct: 0,
+            explanation: "Chính xác! ĐÚNG. <strong>Echo Chamber (Phòng tiếng vang)</strong> giam hãm người dùng trong bong bóng thông tin. Phản biện đa chiều đòi hỏi phải chủ động tiếp cận các quan điểm đối lập để phá vỡ căn phòng này."
+        },
+        {
+            id: 29,
+            category: "Bắt thóp ngụy biện AI",
+            categoryIcon: "🤖",
+            categoryBadge: "bg-rose-100 text-rose-800 border-rose-200",
+            type: "choice",
+            quote: "Trong tranh luận học thuật, thí sinh A chỉ ra một lỗi sai logic trong bài của thí sinh B. Thí sinh B lập tức phản bác: <strong>'Cậu mới là sinh viên năm nhất, GPA kỳ trước thấp hơn tôi thì lấy tư cách gì mà đòi phản biện tôi!'</strong>.",
+            question: "❓ Thí sinh B đang sử dụng loại ngụy biện công kích cá nhân kinh điển nào?",
+            options: [
+                "Ngụy biện Công kích cá nhân (Ad Hominem): Tấn công vào tuổi tác, GPA hay hoàn cảnh của người nói thay vì dùng lý lẽ phản bác vào tính đúng sai của luận điểm",
+                "Ngụy biện cá trích đỏ (Red Herring)",
+                "Lập luận đúng vì sinh viên năm nhất chưa đủ kiến thức",
+                "Ngụy biện tuần hoàn"
+            ],
+            correct: 0,
+            explanation: "Chính xác! <strong>Ngụy biện Ad Hominem (Công kích cá nhân)</strong>. Tính đúng đắn của một lập luận logic độc lập hoàn toàn với danh tính, tuổi tác hay GPA của người nói. Tấn công vào con người là ngụy biện thô thiển."
+        },
+        {
+            id: 30,
+            category: "Bắt thóp ngụy biện AI",
+            categoryIcon: "🤖",
+            categoryBadge: "bg-rose-100 text-rose-800 border-rose-200",
+            type: "true_false",
+            quote: "Ngụy biện 'Ăn theo số đông' (Bandwagon Fallacy / Argumentum ad Populum) là việc cho rằng một nhận định chắc chắn đúng chỉ bởi vì phần lớn mọi người hoặc hàng triệu người trên mạng xã hội đều tin vào điều đó.",
+            question: "❓ Định nghĩa về Ngụy biện Ăn theo số đông trên là ĐÚNG hay SAI?",
+            options: ["ĐÚNG", "SAI"],
+            correct: 0,
+            explanation: "Chính xác! ĐÚNG. Số đông không đồng nghĩa với chân lý. Trong lịch sử, từng có lúc đa số nhân loại tin Trái Đất là trung tâm vũ trụ, nhưng sự thật khoa học không phụ thuộc vào số lượng người giơ tay biểu quyết!"
         }
     ];
 
